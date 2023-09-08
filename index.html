@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Response</title>
+</head>
+<body>
+<h1>ChatGPT Response:</h1>
+<p id="response">Loading...</p>
+
+<script>
+    // JavaScript code for fetching and displaying the response
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('/chat'); // Make a GET request to your server
+            const data = await response.json(); // Parse the response as JSON
+
+            // Update the content of the 'response' element with the ChatGPT response
+            document.getElementById('response').textContent = data.reply;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('response').textContent = 'Error fetching the response.';
+        }
+    });
+
+</script>
+</body>
+</html>
