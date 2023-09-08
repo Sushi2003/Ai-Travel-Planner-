@@ -2,6 +2,11 @@ const https = require('https');
 const fs = require('fs');
 const express = require('express');
 const axios = require('axios');
+const apiKey = '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';
+
+
+// Replace with your actual OpenAI API key
+
 
 const options = {
     key: fs.readFileSync('key.pem'),
@@ -9,6 +14,7 @@ const options = {
 };
 
 const app = express();
+app.use(express.static(__dirname));
 
 // Define a route to handle incoming HTTP requests
 app.get('/', (req, res) => {
@@ -17,20 +23,28 @@ app.get('/', (req, res) => {
 });
 
 // Define a route to interact with the ChatGPT API
+// Define a route to interact with the ChatGPT API
 app.get('/chat', async (req, res) => {
     try {
-        // Make an API call to ChatGPT (replace with your API endpoint)
         const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-            message: 'Hello, ChatGPT!'
+            model: 'gpt-3.5-turbo',
+            messages: [
+                { role: 'system', content: 'You are a helpful assistant.' },
+                { role: 'user', content: 'Tell me a joke.' }
+            ]
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            }
         });
-
-        // Send the response from ChatGPT back to the client
-        res.json({ reply: response.data.reply });
+        console.log('API Response:', response.data);
     } catch (error) {
-        console.error('Error interacting with ChatGPT API:', error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('API Error:', error.response ? error.response.data : error.message);
     }
+
 });
+
 
 const PORT = process.env.PORT || 443;
 
