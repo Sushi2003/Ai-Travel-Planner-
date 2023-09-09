@@ -88,7 +88,7 @@
             <label for="travelers">How many people are going?</label>
             <input type="number" id="travelers" required><br>
 
-            <button class="submit-button" type="submit">Generate Travel Plan</button>
+            <button class="submit-button" type="submit" onclick="scrollDownBy200px()">Generate Travel Plan</button>
         </form>
     </div>
 
@@ -112,6 +112,19 @@
 
         // Define the target scroll position (add 1000 pixels to the current position)
         const targetPosition = currentPosition + 940;
+
+        // Use the scrollTo method with the 'smooth' behavior option
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+    function scrollDownBy200px() {
+        // Calculate the current scroll position
+        const currentPosition = window.scrollY;
+
+        // Define the target scroll position (add 1000 pixels to the current position)
+        const targetPosition = currentPosition + 1200;
 
         // Use the scrollTo method with the 'smooth' behavior option
         window.scrollTo({
