@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Send user input to the server for processing
-            const apiKey = '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';
+            const apiKey = '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';
             const response = await fetch('/generate-travel-plan', {
                 method: 'POST',
                 headers: {
