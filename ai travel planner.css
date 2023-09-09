@@ -233,6 +233,9 @@ main {
 #travel-plan {
     color: white;
 }
+#travel-plan div{
+    margin: 40px;
+}
 
 footer {
     width: 100vw;
