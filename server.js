@@ -2,7 +2,7 @@ const https = require('https');
 const fs = require('fs');
 const express = require('express');
 const axios = require('axios');
-const apiKey = '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';
+const apiKey = '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';
 
 
 // Replace with your actual OpenAI API key
@@ -61,27 +61,27 @@ server.listen(PORT, () => {
 
 
 // const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // const app = express();
-// const port = process.env.PORT || 3000;
-//
-// app.use(bodyParser.json());
-//
-// // Serve static files (e.g., your HTML and JavaScript)
-// app.use(express.static('public'));
-//
-// app.post('/generate-travel-plan', (req, res) => {
-//     // Parse user input from the request body
-//     const { location, date, duration, travelers } = req.body;
-//
-//     // Placeholder for generating a travel plan (replace with actual logic)
-//     const travelPlan = `You are going to ${location} on ${date} for ${duration} days with ${travelers} travelers. Here's your travel plan: ...`;
-//
-//     // Respond with the generated travel plan
-//     res.json({ travelPlan });
-// });
-//
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`);
-// });
-//
+const port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+
+// Serve static files (e.g., your HTML and JavaScript)
+app.use(express.static('public'));
+
+app.post('/generate-travel-plan', (req, res) => {
+    // Parse user input from the request body
+    const { location, date, duration, travelers } = req.body;
+
+    // Placeholder for generating a travel plan (replace with actual logic)
+    const travelPlan = `You are going to ${location} on ${date} for ${duration} days with ${travelers} travelers. Here's your travel plan: ...`;
+
+    // Respond with the generated travel plan
+    res.json({ travelPlan });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
